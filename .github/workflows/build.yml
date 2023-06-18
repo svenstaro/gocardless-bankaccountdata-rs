@@ -1,0 +1,27 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }} ${{ matrix.rust }} (on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable, nightly]
+
+    steps:
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install openapi-generator-cli
+        run: curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > /usr/bin/openapitools/openapi-generator-cli
+      - run: chmod +x openapi-generator-cli
+      - uses: actions/checkout@v3
+      - run: cargo install cargo-tarpaulin
+      - run: cargo build --all
+      - run: cargo test --all
+      - run: |
+          cargo tarpaulin --out Xml
+          bash <(curl -s https://codecov.io/bash)
+        if: matrix.os == 'ubuntu-latest' && matrix.rust == 'nightly' && matrix.target == 'native'

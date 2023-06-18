@@ -1,0 +1,19 @@
+[package]
+name = "gocardless-bankaccountdata"
+description = " Rust API client for GoCardless Bank Account Data"
+version = "0.1.0"
+edition = "2021"
+authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
+repository = "https://github.com/svenstaro/gocardless_bankaccountdata-rs"
+license = "MIT"
+readme = "README.md"
+keywords = ["psd2", "banking"]
+categories = ["finance"]
+
+[dependencies]
+openapi = { path = "openapi/" }
+
+[dev-dependencies]
+tokio = { version = "1.28.2", features = ["macros", "rt", "rt-multi-thread"] }
+anyhow = "1"
+simplelog = "0.12.1"
