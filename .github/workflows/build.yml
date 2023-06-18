@@ -16,8 +16,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - uses: taiki-e/install-action@just
       - name: Install openapi-generator-cli
-        run: curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > /usr/bin/openapi-generator-cli
-      - run: chmod +x openapi-generator-cli
+        run: sudo curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh -o /usr/bin/openapi-generator-cli
+      - run: sudo chmod +x openapi-generator-cli
       - uses: actions/checkout@v3
       - run: cargo install cargo-tarpaulin
       - run: cargo build --all
