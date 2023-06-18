@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**link** | Option<**String**> | Link to initiate authorization with Institution | [optional][readonly][default to https://ob.nordigen.com/pis/start/6f7365d6-b114-41b6-9b4b-6c8f56ceea9e/{$INSTITUTION_ID}]
+**link** | Option<**String**> | Link to initiate authorization with Institution | [optional][readonly][default to https://ob.nordigen.com/pis/start/2d1478d0-0ae0-4500-82d3-7ea8ebfcf9ba/{$INSTITUTION_ID}]
 **payment_id** | Option<**String**> | Payment ID | [optional][readonly]
 **payment_status** | Option<[**crate::models::PaymentStatusEnum**](PaymentStatusEnum.md)> |  | [optional][readonly]
 **payment_product** | Option<[**crate::models::PaymentProductEnum**](PaymentProductEnum.md)> |  | [optional][default to Isct]
